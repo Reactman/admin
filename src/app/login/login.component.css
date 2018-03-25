@@ -1,0 +1,13 @@
+.login_box {
+    background-color: #DADADA;
+    height: 100%;
+  }
+  .login_box > .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 450px;
+  }
