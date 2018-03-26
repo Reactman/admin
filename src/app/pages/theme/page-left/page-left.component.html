@@ -1,0 +1,7 @@
+<ul class="sidebar-list" (mouseleave)="menuMouseOut()">
+  <app-menu [menuItem]='menuItem' *ngFor="let menuItem of menuIList" (itemHover)="onHover($event)">
+  </app-menu>
+</ul>
+<div class="sidebar-hover-elem" [ngStyle]="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}"></div>
+
+

@@ -1,0 +1,18 @@
+.sidebar-list {
+    margin: 0;
+    overflow: hidden;
+    padding: 18px 0 0 0;
+    list-style: none;
+}
+
+.sidebar-hover-elem {
+    width: 3px;
+    background: #2dacd1;
+    position: absolute;
+    top: -150px;
+    left: 98%;
+    transition: all 0.5s ease;
+    transition-property: top, height;
+    height: 42px;
+    display: block;
+}
