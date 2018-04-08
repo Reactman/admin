@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +9,7 @@ export class MenuComponent implements OnInit {
 
   @Input() menuItem;
   @Input() isMenuChildrend = false;
+  @Output() toggleSubMenu = new EventEmitter<any>();
 
   @Output() itemHover = new EventEmitter<any>();
 
@@ -21,10 +21,9 @@ export class MenuComponent implements OnInit {
     this.itemHover.emit($event);
   }
 
-  onToggle($event, menuItem) {
-    const target = $event.currentTarget;
-    $(target).next().slideToggle();
-    menuItem.expand = !menuItem.expand;
+  onToggleSubMenu($event, menu) {
+    $event.menu = menu;
+    this.toggleSubMenu.emit($event);
   }
 
 }

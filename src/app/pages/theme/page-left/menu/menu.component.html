@@ -1,21 +1,21 @@
 <li class="sidebar-list-item">
   <!-- first menu without any route or extenalLink -->
   <a *ngIf="!isMenuChildrend && !menuItem.extenalLink && !menuItem.route" class="sidebar-list-link" 
-              (mouseenter)="onHover($event)" (click)="onToggle($event, menuItem)">
+              (mouseenter)="onHover($event)" (click)="onToggleSubMenu($event, menuItem)">
     <i class="{{menuItem.icon}}"></i>
     <span>{{menuItem.title}}</span>
     <b *ngIf="menuItem.subMenu" [ngClass]="{'fa':true, 'fa-angle-right': !menuItem.expand, 'fa-angle-down': menuItem.expand}"></b>
   </a>
   <!-- first menu with an extenalLink -->
   <a *ngIf="!isMenuChildrend && menuItem.extenalLink && !menuItem.route" [href]="menuItem.extenalLink" [target]="menuItem.target"
-              (mouseenter)="onHover($event)" (click)="onToggle($event, menuItem)" class="sidebar-list-link" >
+              (mouseenter)="onHover($event)"  class="sidebar-list-link" >
       <i class="{{menuItem.icon}}"></i>
       <span>{{menuItem.title}}</span>
       <b *ngIf="menuItem.subMenu" [ngClass]="{'fa':true, 'fa-angle-right': !menuItem.expand, 'fa-angle-down': menuItem.expand}"></b>
   </a>
   <!-- first menu with an inner route -->
   <a *ngIf="!isMenuChildrend && menuItem.route && !menuItem.extenalLink" [routerLink]="menuItem.route"
-              (mouseenter)="onHover($event)" (click)="onToggle($event, menuItem)" class="sidebar-list-link" >
+              (mouseenter)="onHover($event)" class="sidebar-list-link" >
       <i class="{{menuItem.icon}}"></i>
       <span>{{menuItem.title}}</span>
       <b *ngIf="menuItem.subMenu" [ngClass]="{'fa':true, 'fa-angle-right': !menuItem.expand, 'fa-angle-down': menuItem.expand}"></b>
@@ -34,7 +34,9 @@
 
   <!-- subMenu render -->
   <ul class="sidebar-sublist">
-      <app-menu [menuItem]='subMenu' [isMenuChildrend]="true" (itemHover)="onHover($event)" 
+      <app-menu [menuItem]='subMenu' [isMenuChildrend]="true" 
+      (itemHover)="onHover($event)"
+      (toggleSubMenu)="onToggleSubMenu($event, subMenu)" 
                   *ngFor="let subMenu of menuItem.subMenu">
       </app-menu>
   </ul>

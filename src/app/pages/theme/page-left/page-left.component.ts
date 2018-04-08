@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from '../../../../../mock-data/menu';
+import { Component, OnInit, Input, AfterViewInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-page-left',
@@ -8,16 +7,18 @@ import { MenuItem } from '../../../../../mock-data/menu';
 })
 export class PageLeftComponent implements OnInit {
 
-  public menuIList;
+  public leftSideBarHeight: number;
+
+  @Input() public menuItems;
 
   public hoverElemHeight: number;
 
   public hoverElemTop: number;
 
-  constructor() { }
+  constructor(private ref: ElementRef) { }
 
   ngOnInit() {
-    this.menuIList = MenuItem;
+    this.leftSideBarHeight = this.ref.nativeElement.parentNode.clientHeight - 60;
   }
 
   menuMouseOut() {
@@ -27,6 +28,12 @@ export class PageLeftComponent implements OnInit {
   onHover($event) {
     this.hoverElemHeight = $event.currentTarget.clientHeight;
     this.hoverElemTop = $event.currentTarget.getBoundingClientRect().top - 50;
+  }
+
+  toggleSubMenu($event) {
+    const target = $event.currentTarget;
+    $event.menu.expand = !$event.menu.expand;
+    $(target).next().slideToggle();
   }
 
 }
