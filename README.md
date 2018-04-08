@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Plugins
 
-Message show up by [ngx-toastr](https://www.npmjs.com/package/ngx-toastr).
+1. Message show up by [ngx-toastr](https://www.npmjs.com/package/ngx-toastr).
